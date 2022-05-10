@@ -1,22 +1,42 @@
 const express = require('express');
 const app = express();
 
-const myNumbers = [
-{ id: 1, name: 'one' },
-{ id: 2, name: 'Two' },
-{ id: 3,  name: 'Three' }
-]
+const lookup = 
+{ 5: "L", 7: 'R', 57:'LR' }
+
 
 app.get('/', (req, res) => {
   res.send('I am in the game!');
 });
 
  app.get('/api/number/:id', (req, res) => {
-    const numId = myNumbers.find( c => c.id === parseInt(req.params.id));
 
-    if(!numId) res.status(404).send('A wrong one!');
+    let { id } = req.params;
+    const mod5 = 5, mod7 = 7;
 
-    res.send(numId);
+        if((id % mod5 === 0) && (id % mod7 === 0)) {
+          res.send({
+            value: lookup[57]
+          })
+          id = lookup[57];
+        } else if(id % mod5 === 0) {
+          res.send({
+            value: lookup[mod5]
+          })
+          id = lookup[mod5];
+        } else if (id % mod7 === 0) {
+          res.send({
+            value: lookup[mod7]
+          })
+          id = lookup[mod7];
+        }
+
+        res.send({
+            value: id
+        })
+        res.send({
+            value: id
+        })
  })
 
 const port = process.env.PORT || 3000;
