@@ -49,7 +49,7 @@ Give a ⭐️ if you like this project!
 
 ## Acknowledgments
 
-- Badili.africa team
+- Badili.africa team, Tnhak you!
 
 ## 📝 License
 
